@@ -1,24 +1,65 @@
-import logo from './logo.svg';
-import './App.css';
+import data from './data'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="grid-container">
+      <header className="row">
+        <div>
+          <a href="/" className="brand"> amazona </a>
+        </div>
+        <div>
+          <a href="/cart">  Cart </a>
+          <a href="/signin"> Sign In</a>
+        </div>
       </header>
-    </div>
+      <main>
+        <div className=" row center">
+          {/* Card start */}
+
+          {
+
+            data.products.map((product) => (
+              <div className="card" key={product._id}>
+                <a href={`product/${product._id}`}>
+                  {/* image size 680px by 830px */}
+                  <img className="medium" src={product.image} alt="product" />
+                </a>
+                <div className="card-body">
+                  <h2><a href={`product/${product._id}`}> {product.name}
+                  </a>  </h2>
+                  <div className="rating">
+                    <span>
+                      <i className="fa fa-star" />
+                    </span>
+                    <span>
+                      <i className="fa fa-star" />
+                    </span>
+                    <span>
+                      <i className="fa fa-star" />
+                    </span>
+                    <span>
+                      <i className="fa fa-star" />
+                    </span>
+                    <span>
+                      <i className="fa fa-star" />
+                    </span>
+                  </div>
+                  <div className="price">
+                    ${product.price}
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+
+          {/* Card end*/}
+
+        </div>
+      </main>
+      <footer className="row center">
+        All  right reserved
+      </footer>
+    </div >
   );
 }
 
